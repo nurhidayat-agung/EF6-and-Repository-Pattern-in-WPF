@@ -1,0 +1,99 @@
+﻿<Page x:Class="MaterialShop.ui.uiPenjualan"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MaterialShop.ui"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="708"
+      Background="#D1C4E9"
+      Title="uiPenjualan">
+
+    <Grid>
+        <ComboBox x:Name="cbxCustomer" HorizontalAlignment="Left" 
+                  Margin="416,10,0,0" VerticalAlignment="Top" 
+                  Width="252" FontSize="16"
+                  DisplayMemberPath="namaCustomer"
+                  SelectedValuePath="idCustomer"/>
+        <TextBox x:Name="tbxNamaBarang" HorizontalAlignment="Left" 
+                 Height="31" Margin="10,10,0,0" TextWrapping="Wrap" 
+                  VerticalAlignment="Top" Width="229" 
+                 FontSize="16" materialDesign:HintAssist.Hint="Cari Nama Barang"/>
+        <Button x:Name="btnCari" Content="Cari" 
+                HorizontalAlignment="Left" Margin="259,9,0,0" 
+                VerticalAlignment="Top" Width="75" FontSize="16"
+                Click="BtnCari_OnClick"/>
+        <DataGrid x:Name="dgCariBarang" HorizontalAlignment="Left" 
+                  Margin="10,46,0,0" VerticalAlignment="Top" 
+                  Height="198" Width="387" AutoGenerateColumns="False"
+                  IsReadOnly="True" CanUserAddRows="False"
+                  SelectedCellsChanged="DgCariBarang_OnSelectedCellsChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nama Barang" 
+                                    Width="110"
+                                    Binding="{Binding namaBarang}"/>
+                <DataGridTextColumn Header="Stok" 
+                                    Width="60" 
+                                    Binding="{Binding stok}"/>
+                <DataGridTextColumn Header="Nama Kategori" 
+                                    Width="120" 
+                                    Binding="{Binding Path=kategori.namaKategori}"/>
+                <DataGridTextColumn Header="harga" 
+                                    Width="120" 
+                                    Binding="{Binding harga}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="tbxNamaDetail" HorizontalAlignment="Left" 
+            Height="31" Margin="416,52,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="252" 
+            FontSize="16" materialDesign:HintAssist.Hint="Nama Barang"
+                 IsReadOnly="True"/>
+        <Button x:Name="btnToCart" Content="Cart" 
+            HorizontalAlignment="Left" Margin="416,0,0,324" 
+            VerticalAlignment="Bottom" Width="252" FontSize="16" 
+                Click="btnToCart_Click"/>
+        <DataGrid x:Name="dgCart" HorizontalAlignment="Left" 
+            Margin="10,266,0,0" VerticalAlignment="Top" 
+            Height="204" Width="324"
+            AutoGenerateColumns="False"
+            IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nama Barang" 
+                                    Width="140" 
+                                    Binding="{Binding namaBarang}"/>
+                <DataGridTextColumn Header="Qty" 
+                                    Width="60" 
+                                    Binding="{Binding jmlJual}"/>
+                <DataGridTextColumn Header="Harga" 
+                                    Width="150" 
+                                    Binding="{Binding hargaBarang}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <TextBox x:Name="tbxTotalBayar" HorizontalAlignment="Left" 
+            Height="31" Margin="374,266,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="252" 
+            FontSize="16" materialDesign:HintAssist.Hint="Harga Total"
+            IsReadOnly="True" IsEnabled="False"/>
+        <TextBox x:Name="tbxDibayar" HorizontalAlignment="Left" 
+            Height="31" Margin="374,302,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="252"  
+            FontSize="16" materialDesign:HintAssist.Hint="Uang DIterima"
+                 PreviewTextInput="TbxDibayar_OnPreviewTextInput"/>
+        <TextBox x:Name="tbxKembali" HorizontalAlignment="Left" 
+            Height="31" Margin="374,338,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="252" 
+            FontSize="16" materialDesign:HintAssist.Hint="Uang Kembali" 
+            IsReadOnly="True" IsEnabled="False"/>
+        <Button x:Name="btnJual" Content="Proses" 
+            HorizontalAlignment="Left" Margin="374,374,0,0" 
+            VerticalAlignment="Top" Width="252" FontSize="16" Click="btnJual_Click"/>
+        <TextBox x:Name="tbxJmlbeli" HorizontalAlignment="Left" 
+            Height="31" Margin="416,88,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="252" PreviewTextInput="TbxJmlbeli_OnPreviewTextInput"
+            FontSize="16" materialDesign:HintAssist.Hint="Jumlah Beli"/>
+
+    </Grid>
+</Page>

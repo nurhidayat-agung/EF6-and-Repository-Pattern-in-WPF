@@ -1,0 +1,114 @@
+﻿<Page x:Class="MaterialShop.ui.uiPembelian"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MaterialShop.ui"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="708"
+      Background="#D1C4E9"
+      Title="uiPembelian">
+
+    <Grid>
+        <TextBox x:Name="tbxNamaBeli" HorizontalAlignment="Left" Height="33" 
+                 Margin="10,23,0,0" TextWrapping="Wrap" Text="" 
+                 VerticalAlignment="Top" Width="253" FontSize="16"
+                 materialDesign:HintAssist.Hint="Masukan Nama Pembelian"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" 
+                Margin="10,61,0,0" VerticalAlignment="Top" Width="75" 
+                FontSize="16" Height="33" Click="BtnSave_OnClick"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" 
+                Margin="106,61,0,0" VerticalAlignment="Top" Width="75" 
+                FontSize="16" Height="33" Click="BtnEdit_OnClick"/>
+        <DataGrid x:Name="dgPembelian" HorizontalAlignment="Left" Margin="10,104,0,0" 
+                  VerticalAlignment="Top" Height="172" Width="313"
+                  IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                  SelectedCellsChanged="DgPembelian_OnSelectedCellsChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="60" Binding="{Binding idPembelian}"/>
+                <DataGridTextColumn Header="Nama Pembelian" Width="140" Binding="{Binding namaPembelian}"/>
+                <DataGridTextColumn Header="Tanggal" Width="80" Binding="{Binding tglBeli}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel HorizontalAlignment="Left" Height="276" Margin="350,0,0,0" 
+                    VerticalAlignment="Top" Width="348" Orientation="Vertical"
+                    x:Name="pnlCariBarang">
+            <TextBox x:Name="tbxNamaBarang" Height="43" TextWrapping="Wrap" 
+                     Text="" FontSize="16" Margin="10"
+                     materialDesign:HintAssist.Hint="Masukan nama Barang"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" 
+                        Margin="10,0,10,10">
+                <Button Content="Cari" x:Name="btnCari" Click="btnCari_Click" />
+            </StackPanel>
+            <DataGrid Height="170" x:Name="dgBarang" 
+                      CanUserAddRows="False"
+                      IsReadOnly="True" AutoGenerateColumns="False"
+                      SelectedCellsChanged="DgBarang_OnSelectedCellsChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nama Barang" Width="140" Binding="{Binding namaBarang}"/>
+                    <DataGridTextColumn Header="Harga" Width="100" Binding="{Binding harga}"/>
+                    <DataGridTextColumn Header="Stok" Width="80" Binding="{Binding stok}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="189" 
+                    Margin="10,281,0,0" VerticalAlignment="Top" 
+                    Width="688" Orientation="Horizontal">
+            <StackPanel Width="270" x:Name="pnlDetilBarang">
+                <DataGrid Margin="0,10,10,10" Height="170" x:Name="dgDetailBeli" 
+                          AutoGenerateColumns="False" CanUserAddRows="False"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="50" Binding="{Binding idBarangRefId}"/>
+                        <DataGridTextColumn Header="Nama Barang" Width="150" Binding="{Binding namaBarang}"/>
+                        <DataGridTextColumn Header="QTY" Width="50" Binding="{Binding jmlBeli}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+            <StackPanel Width="418" Orientation="Vertical" x:Name="pnlDetilJml">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox IsReadOnly="True" Width="185" 
+                             materialDesign:HintAssist.Hint="nama barang" 
+                             FontSize="16" x:Name="tbxBarangDetil"/>
+                    <ComboBox Margin="20,0,0,0" x:Name="cbxSupplier" 
+                              FontSize="16" Width="211"
+                              DisplayMemberPath="supplierName"
+                              SelectedValuePath="idSupplier"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tbxJmlBeli" FontSize="16"
+                             materialDesign:HintAssist.Hint="jumlah dibeli"
+                             Margin="0,10,10,10"  PreviewTextInput="TbxJmlBeli_OnPreviewTextInput"/>
+                    <Button Content="Tambah" Margin="10" FontSize="16"
+                            x:Name="btnTambahDetail" 
+                            Click="btnTambahDetail_Click"/>
+                    <Button Content="Edit" Margin="10" FontSize="16"
+                            x:Name="btnEditDetail"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBox materialDesign:HintAssist.Hint="total item"
+                             IsEnabled="False" IsReadOnly="True"
+                             FontSize="16" Width="100" x:Name="tbxTotalItem"/>
+                    <TextBox materialDesign:HintAssist.Hint="total bayar"
+                             FontSize="16"
+                             x:Name="tbxTotalBayar"
+                             Margin="20,0,0,0"
+                             IsReadOnly="True" IsEnabled="False"
+                             Width="297"/>
+                </StackPanel>
+                <Button Margin="10" FontSize="16" 
+                        Content="Tambah Pembelian"
+                        x:Name="btnPushDetailBeli" 
+                        Click="BtnPushDetailBeli_OnClick"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+    </Grid>
+</Page>

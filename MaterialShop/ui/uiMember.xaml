@@ -1,0 +1,32 @@
+﻿<Page x:Class="MaterialShop.ui.uiMember"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MaterialShop.ui"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="708"
+      Background="#D1C4E9"
+      Title="uiMember">
+
+    <Grid>
+        <TextBox x:Name="tbxNamaCustomer" HorizontalAlignment="Left" 
+                 Height="41" Margin="27,24,0,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="208" 
+                 FontSize="16" materialDesign:HintAssist.Hint="nama kustomer"/>
+        <DataGrid x:Name="dgCustomer" HorizontalAlignment="Left" 
+                  Margin="27,70,0,0" VerticalAlignment="Top" 
+                  Height="144" Width="328" IsReadOnly="True"
+                  CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding idCustomer}"/>
+                <DataGridTextColumn Header="Nama Customer" Binding="{Binding namaCustomer}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnTambah" Content="Tambah" HorizontalAlignment="Left" 
+                Margin="259,33,0,0" VerticalAlignment="Top" Width="96" 
+                Click="btnTambah_Click"/>
+
+    </Grid>
+</Page>
